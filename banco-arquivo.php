@@ -1,3 +1,6 @@
+//Não é utilizado em nenhuma parte da aplicação.
+
+
 <?php
 $contadorArquivo = 1;
 $nomeArquivo = "";
