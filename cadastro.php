@@ -2,7 +2,7 @@
 
 require_once("conecta.php");
 require_once("banco-candidatos.php");
-
+require_once("limpaCaracteres.php");
 
 $nome = $_POST["nome"];
 $email = $_POST["email"];
@@ -14,8 +14,10 @@ $periodo = $_POST["periodo"];
 $horario = $_POST["horario"];
 $informacoes = $_POST["informacoes"];
 
+$arquivo = str_replace(" ", "-", clearName($_FILES['curriculo']['name']));
+
 $nomeArquivo = "uploads/";
-$nomeArquivo .= time() .date('Yhis') .$_FILES["curriculo"]["name"];
+$nomeArquivo .= time() .date('Yhis') .$arquivo;
 //$arquivo = "uploads/". basename($_FILES["curriculo"]["name"]);
 
 if(move_uploaded_file($_FILES["curriculo"]["tmp_name"], $nomeArquivo)){
@@ -30,8 +32,6 @@ if(move_uploaded_file($_FILES["curriculo"]["tmp_name"], $nomeArquivo)){
     }
 }
 else{
-$_FILES["curriculo"]["error"];
+echo $_FILES["curriculo"]["error"];
 }
 
-print_r($_FILES);
-    
